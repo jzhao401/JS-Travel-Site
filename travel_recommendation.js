@@ -209,8 +209,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!hasMatches) {
         const message = document.createElement("p");
         message.className = "no-results";
-        message.style.cssText =
-          "text-align: center; font-size: 1.2rem; color: #666; padding: 40px 20px; margin: 0;";
         message.textContent = `No results found for "${searchInput.value}".`;
         recommendations.appendChild(message);
       }

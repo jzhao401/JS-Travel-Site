@@ -101,37 +101,33 @@
                 background: #777;
             }
 
-            /* Hero section (Home page) */
+            /* Hero section (updated for left-right layout with scrolling) */
             .hero {
                 position: relative;
-                height: calc(
-                    100vh - 60px
-                ); /* subtract approximate nav height */
+                height: calc(100vh - 60px); /* Fixed height fitting viewport minus nav */
                 background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80")
                     center/cover no-repeat;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding: 40px 20px;
+                overflow: hidden; /* Prevent hero overflow */
                 color: #fff;
-                padding: 0 20px;
             }
             .hero::before {
                 content: "";
                 position: absolute;
                 inset: 0;
-                background: rgba(
-                    0,
-                    0,
-                    0,
-                    0.5
-                ); /* dark overlay for readability */
+                background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
                 z-index: 0;
             }
             .hero-content {
                 position: relative;
                 z-index: 1;
-                max-width: 800px;
+                flex: 1;
+                max-width: 50%;
+                padding-right: 20px;
+                box-sizing: border-box;
             }
             .hero-content h1 {
                 font-size: 3rem;
@@ -159,12 +155,17 @@
                 background: #16a085;
             }
 
-            /* Recommendations section */
+            /* Recommendations section (now inside hero, with scrolling) */
             #recommendations {
-                max-width: 1200px;
-                margin: 40px auto;
-                padding: 0 20px;
+                flex: 1;
+                max-width: 50%;
+                height: 100%;
+                overflow-y: auto;
+                padding-left: 20px;
+                box-sizing: border-box;
                 font-family: Arial, Helvetica, sans-serif;
+                position: relative;
+                z-index: 1;
             }
             .category-section {
                 margin-bottom: 60px;
@@ -179,7 +180,7 @@
             }
             .recommendation-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly narrower for right panel */
                 gap: 20px;
             }
             .recommendation-item {
@@ -218,13 +219,38 @@
                 margin: 0 0 10px;
                 color: #1abc9c;
             }
+            .no-results {
+                text-align: center;
+                font-size: 1.2rem;
+                color: #666;
+                padding: 40px 20px;
+                margin: 0;
+                background: #fff;
+                border-radius: 8px;
+            }
 
             @media (max-width: 768px) {
+                .hero {
+                    flex-direction: column;
+                    padding: 20px;
+                }
+                .hero-content {
+                    max-width: 100%;
+                    padding-right: 0;
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
                 .hero-content h1 {
                     font-size: 2.2rem;
                 }
                 .hero-content p {
                     font-size: 1rem;
+                }
+                #recommendations {
+                    max-width: 100%;
+                    padding-left: 0;
+                    height: auto; /* Allow natural height on mobile, but still scroll if needed */
+                    overflow-y: visible;
                 }
                 .recommendation-grid {
                     grid-template-columns: 1fr;
@@ -265,8 +291,9 @@
             </div>
         </nav>
 
-        <!-- Home page hero section -->
+        <!-- Hero section with integrated left-right layout -->
         <section class="hero">
+            <!-- Left: Inspiration slogan and booking -->
             <div class="hero-content">
                 <h1>Hey! Ready for your next adventure?</h1>
                 <p>
@@ -278,10 +305,10 @@
 
                 <a href="#" class="btn-book">BOOK NOW</a>
             </div>
-        </section>
 
-        <!-- Recommendations container -->
-        <div id="recommendations"></div>
+            <!-- Right: Recommendations (now inside hero, scrollable) -->
+            <div id="recommendations"></div>
+        </section>
 
         <script src="travel_recommendation.js"></script>
     </body>
