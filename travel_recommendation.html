@@ -61,6 +61,30 @@
                 background-color: #777;
             }
 
+            /* Social media sidebar (left column) */
+            .social-sidebar {
+                position: fixed;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.5);
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                z-index: 3;
+            }
+            .social-sidebar a {
+                color: #fff;
+                font-size: 1.8rem;
+                transition: color 0.3s;
+            }
+            .social-sidebar a:hover {
+                color: #1abc9c; /* teal hover */
+            }
+
             /* Hero section (Home page) */
             .hero {
                 position: relative;
@@ -104,15 +128,6 @@
                 margin-bottom: 2rem;
                 font-size: 1.1rem;
             }
-            .social-icons a {
-                color: #fff;
-                margin: 0 10px;
-                font-size: 1.8rem;
-                transition: color 0.3s;
-            }
-            .social-icons a:hover {
-                color: #1abc9c; /* teal hover */
-            }
             .btn-book {
                 display: inline-block;
                 background: #1abc9c;
@@ -139,8 +154,16 @@
         </style>
     </head>
     <body>
+        <!-- Social media icons column on the left -->
+        <div class="social-sidebar">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
         <nav>
-            <div class="logo">TravelBloom ✈️</div>
+            <div class="logo">TravelBloom 🌍</div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
@@ -167,21 +190,6 @@
                     the desired destination that captivates the heart and
                     ignites a sense of wonder.
                 </p>
-
-                <div class="social-icons">
-                    <a href="#" aria-label="Twitter"
-                        ><i class="fab fa-twitter"></i
-                    ></a>
-                    <a href="#" aria-label="Facebook"
-                        ><i class="fab fa-facebook-f"></i
-                    ></a>
-                    <a href="#" aria-label="Instagram"
-                        ><i class="fab fa-instagram"></i
-                    ></a>
-                    <a href="#" aria-label="YouTube"
-                        ><i class="fab fa-youtube"></i
-                    ></a>
-                </div>
 
                 <a href="#" class="btn-book">BOOK NOW</a>
             </div>
