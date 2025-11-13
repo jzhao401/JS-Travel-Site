@@ -1,66 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <title>Travel Recommendation</title>
-    <style>
-        /* Basic styling for navigation bar */
-        nav {
-            background-color: #f2f2f2;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        nav .nav-links a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-        nav .search-container {
-            display: flex;
-            align-items: center;
-        }
-        nav .search-container input[type="text"] {
-            padding: 5px;
-            margin-right: 5px;
-        }
-        nav .search-container button {
-            margin-left: 5px;
-            padding: 5px 10px;
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-        </div>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search recommendations...">
-            <button type="button" id="searchBtn">Search</button>
-            <button type="button" id="resetBtn">Reset</button>
-        </div>
-    </nav>
-
-    <h1>Hey there! Looking for travel recommendations?</h1>
-    <!-- Page content goes here -->
-    <script>
-        // Simple search button handler (placeholder)
-        document.getElementById('searchBtn').addEventListener('click', function() {
-            const query = document.getElementById('searchInput').value.trim();
-            if (query) {
-                // Placeholder: In a real implementation, perform the search here
-                alert('Search for: ' + query);
+    <head>
+        <title>Travel Recommendation</title>
+        <style>
+            /* Basic styling for navigation bar */
+            nav {
+                background-color: #f2f2f2;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
             }
-        });
+            nav .nav-links a {
+                margin-right: 15px;
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+            nav .search-container {
+                display: flex;
+                align-items: center;
+            }
+            nav .search-container input[type="text"] {
+                padding: 5px;
+                margin-right: 5px;
+            }
+            nav .search-container button {
+                margin-left: 5px;
+                padding: 5px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search recommendations..."
+                />
+                <button type="button" id="searchBtn">Search</button>
+                <button type="button" id="resetBtn">Reset</button>
+            </div>
+        </nav>
 
-        // Reset button clears the input field
-        document.getElementById('resetBtn').addEventListener('click', function() {
-            document.getElementById('searchInput').value = '';
-        });
-    </script>
-</body>
+        <h1>Hey there! Looking for travel recommendations?</h1>
+        <!-- Page content goes here -->
+        <script>
+            // Simple search button handler (placeholder)
+            document
+                .getElementById("searchBtn")
+                .addEventListener("click", function () {
+                    const query = document
+                        .getElementById("searchInput")
+                        .value.trim();
+                    if (query) {
+                        // Placeholder: In a real implementation, perform the search here
+                        alert("Search for: " + query);
+                    }
+                });
+
+            // Reset button clears the input field
+            document
+                .getElementById("resetBtn")
+                .addEventListener("click", function () {
+                    document.getElementById("searchInput").value = "";
+                });
+        </script>
+    </body>
 </html>
