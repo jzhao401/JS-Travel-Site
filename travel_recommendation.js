@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  let fullData;
   try {
     const response = await fetch("./travel_recommendation_api.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+    fullData = data;
     console.log("Fetched data:", data); // Log to verify access
 
     const container = document.getElementById("recommendations");
@@ -124,30 +126,77 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      // Remove existing no-results message if any
-      const existingMessage = recommendations.querySelector(".no-results");
-      if (existingMessage) {
-        existingMessage.remove();
-      }
+      recommendations.innerHTML = '';
 
-      const sections = recommendations.querySelectorAll(".category-section");
+      const resultsSection = document.createElement("section");
+      resultsSection.className = "category-section";
+      resultsSection.innerHTML = '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
+      const resultsGrid = resultsSection.querySelector(".recommendation-grid");
+      recommendations.appendChild(resultsSection);
+
       let hasMatches = false;
 
-      sections.forEach((section) => {
-        const h2Text = section.querySelector("h2").textContent.toLowerCase();
-        section.style.display = "none"; // Hide all initially
-
-        if (searchTerm.includes("beach") && h2Text === "beaches") {
-          section.style.display = "block";
+      if (searchTerm === 'beach' || searchTerm === 'beaches') {
+        if (fullData.beaches && Array.isArray(fullData.beaches)) {
           hasMatches = true;
-        } else if (searchTerm.includes("temple") && h2Text === "temples") {
-          section.style.display = "block";
-          hasMatches = true;
-        } else if (searchTerm.includes("country") && h2Text === "countries") {
-          section.style.display = "block";
-          hasMatches = true;
+          fullData.beaches.forEach((beach) => {
+            const beachDiv = document.createElement("div");
+            beachDiv.className = "recommendation-item";
+            beachDiv.innerHTML = `
+              <img src="${beach.imageUrl}" alt="${beach.name}" style="width: 100%; height: 200px; object-fit: cover;">
+              <h3>${beach.name}</h3>
+              <p>${beach.description}</p>
+            `;
+            resultsGrid.appendChild(beachDiv);
+          });
         }
-      });
+      } else if (searchTerm === 'temple' || searchTerm === 'temples') {
+        if (fullData.temples && Array.isArray(fullData.temples)) {
+          hasMatches = true;
+          fullData.temples.forEach((temple) => {
+            const templeDiv = document.createElement("div");
+            templeDiv.className = "recommendation-item";
+            templeDiv.innerHTML = `
+              <img src="${temple.imageUrl}" alt="${temple.name}" style="width: 100%; height: 200px; object-fit: cover;">
+              <h3>${temple.name}</h3>
+              <p>${temple.description}</p>
+            `;
+            resultsGrid.appendChild(templeDiv);
+          });
+        }
+      } else if (searchTerm === 'country' || searchTerm === 'countries') {
+        if (fullData.countries && Array.isArray(fullData.countries)) {
+          hasMatches = true;
+          fullData.countries.forEach((country) => {
+            const countryDiv = document.createElement("div");
+            countryDiv.className = "recommendation-item";
+
+            let citiesHtml = "";
+            if (country.cities && Array.isArray(country.cities)) {
+              citiesHtml = country.cities
+                .map(
+                  (city) => `
+                    <div>
+                      <h4>${city.name}</h4>
+                      <img src="${city.imageUrl}" alt="${city.name}" style="max-width: 100%; height: auto;">
+                      <p>${city.description}</p>
+                    </div>
+                  `,
+                )
+                .join("");
+            }
+
+            countryDiv.innerHTML = `
+              <img src="${country.cities?.[0]?.imageUrl || ""}" alt="${country.name}" style="width: 100%; height: 200px; object-fit: cover;">
+              <h3>${country.name}</h3>
+              <p>${country.cities?.[0]?.description || ""}</p>
+              ${citiesHtml ? `<div class="country-cities">${citiesHtml}</div>` : ""}
+            `;
+
+            resultsGrid.appendChild(countryDiv);
+          });
+        }
+      }
 
       if (!hasMatches) {
         const message = document.createElement("p");
@@ -162,14 +211,92 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Reset button click handler
     resetBtn.addEventListener("click", () => {
       searchInput.value = "";
-      const sections = recommendations.querySelectorAll(".category-section");
-      sections.forEach((section) => {
-        section.style.display = "block";
-      });
-      // Remove no-results message if present
-      const existingMessage = recommendations.querySelector(".no-results");
-      if (existingMessage) {
-        existingMessage.remove();
+      recommendations.innerHTML = '';
+
+      // Re-render countries section
+      if (fullData.countries && Array.isArray(fullData.countries)) {
+        const countriesSection = document.createElement("section");
+        countriesSection.className = "category-section";
+        countriesSection.innerHTML =
+          '<h2>Countries</h2><div class="recommendation-grid"></div>';
+        const countriesGrid = countriesSection.querySelector(
+          ".recommendation-grid",
+        );
+
+        fullData.countries.forEach((country) => {
+          const countryDiv = document.createElement("div");
+          countryDiv.className = "recommendation-item";
+
+          let citiesHtml = "";
+          if (country.cities && Array.isArray(country.cities)) {
+            citiesHtml = country.cities
+              .map(
+                (city) => `
+                  <div>
+                    <h4>${city.name}</h4>
+                    <img src="${city.imageUrl}" alt="${city.name}" style="max-width: 100%; height: auto;">
+                    <p>${city.description}</p>
+                  </div>
+                `,
+              )
+              .join("");
+          }
+
+          countryDiv.innerHTML = `
+            <img src="${country.cities?.[0]?.imageUrl || ""}" alt="${country.name}" style="width: 100%; height: 200px; object-fit: cover;">
+            <h3>${country.name}</h3>
+            <p>${country.cities?.[0]?.description || ""}</p>
+            ${citiesHtml ? `<div class="country-cities">${citiesHtml}</div>` : ""}
+          `;
+
+          countriesGrid.appendChild(countryDiv);
+        });
+
+        recommendations.appendChild(countriesSection);
+      }
+
+      // Re-render temples section
+      if (fullData.temples && Array.isArray(fullData.temples)) {
+        const templesSection = document.createElement("section");
+        templesSection.className = "category-section";
+        templesSection.innerHTML =
+          '<h2>Temples</h2><div class="recommendation-grid"></div>';
+        const templesGrid = templesSection.querySelector(".recommendation-grid");
+
+        fullData.temples.forEach((temple) => {
+          const templeDiv = document.createElement("div");
+          templeDiv.className = "recommendation-item";
+          templeDiv.innerHTML = `
+            <img src="${temple.imageUrl}" alt="${temple.name}" style="width: 100%; height: 200px; object-fit: cover;">
+            <h3>${temple.name}</h3>
+            <p>${temple.description}</p>
+          `;
+          templesGrid.appendChild(templeDiv);
+        });
+
+        recommendations.appendChild(templesSection);
+      }
+
+      // Re-render beaches section
+      if (fullData.beaches && Array.isArray(fullData.beaches)) {
+        const beachesSection = document.createElement("section");
+        beachesSection.className = "category-section";
+        beachesSection.innerHTML =
+          '<h2>Beaches</h2><div class="recommendation-grid"></div>';
+        const beachesGrid = beachesSection.querySelector(".recommendation-grid");
+
+        fullData.beaches.forEach((beach) => {
+          const beachDiv = document.createElement("div");
+          beachDiv.className = "recommendation-item";
+          beachDiv.innerHTML = `
+            <img src="${beach.imageUrl}" alt="${beach.name}" style="width: 100%; height: 200px; object-fit: cover;">
+            <h3>${beach.name}</h3>
+            <p>${beach.description}</p>
+          `;
+          beachesGrid.appendChild(beachDiv);
+        });
+
+        recommendations.appendChild(beachesSection);
       }
     });
   } catch (error) {
