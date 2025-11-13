@@ -185,7 +185,7 @@
             }
             .recommendation-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly narrower for right panel */
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
             .recommendation-item {
@@ -256,9 +256,6 @@
                     padding-left: 0;
                     height: auto; /* Allow natural height on mobile, but still scroll if needed */
                     overflow-y: visible;
-                }
-                .recommendation-grid {
-                    grid-template-columns: 1fr;
                 }
             }
         </style>
