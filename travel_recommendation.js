@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const renderAllRecommendations = (data) => {
       const recommendations = document.getElementById("recommendations");
       if (!recommendations) return;
-      recommendations.innerHTML = '';
+      recommendations.innerHTML = "";
 
       // Render countries section
       if (data.countries && Array.isArray(data.countries)) {
@@ -62,7 +62,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         templesSection.className = "category-section";
         templesSection.innerHTML =
           '<h2>Temples</h2><div class="recommendation-grid"></div>';
-        const templesGrid = templesSection.querySelector(".recommendation-grid");
+        const templesGrid = templesSection.querySelector(
+          ".recommendation-grid",
+        );
 
         data.temples.forEach((temple) => {
           const templeDiv = document.createElement("div");
@@ -84,7 +86,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         beachesSection.className = "category-section";
         beachesSection.innerHTML =
           '<h2>Beaches</h2><div class="recommendation-grid"></div>';
-        const beachesGrid = beachesSection.querySelector(".recommendation-grid");
+        const beachesGrid = beachesSection.querySelector(
+          ".recommendation-grid",
+        );
 
         data.beaches.forEach((beach) => {
           const beachDiv = document.createElement("div");
@@ -132,17 +136,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      recommendations.innerHTML = '';
+      recommendations.innerHTML = "";
 
       let hasMatches = false;
 
-      if (searchTerm === 'beach' || searchTerm === 'beaches') {
+      if (searchTerm === "beach" || searchTerm === "beaches") {
         if (fullData.beaches && Array.isArray(fullData.beaches)) {
           hasMatches = true;
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
-          resultsSection.innerHTML = '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
-          const resultsGrid = resultsSection.querySelector(".recommendation-grid");
+          resultsSection.innerHTML =
+            '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
+          const resultsGrid = resultsSection.querySelector(
+            ".recommendation-grid",
+          );
           recommendations.appendChild(resultsSection);
           fullData.beaches.forEach((beach) => {
             const beachDiv = document.createElement("div");
@@ -155,13 +162,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             resultsGrid.appendChild(beachDiv);
           });
         }
-      } else if (searchTerm === 'temple' || searchTerm === 'temples') {
+      } else if (searchTerm === "temple" || searchTerm === "temples") {
         if (fullData.temples && Array.isArray(fullData.temples)) {
           hasMatches = true;
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
-          resultsSection.innerHTML = '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
-          const resultsGrid = resultsSection.querySelector(".recommendation-grid");
+          resultsSection.innerHTML =
+            '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
+          const resultsGrid = resultsSection.querySelector(
+            ".recommendation-grid",
+          );
           recommendations.appendChild(resultsSection);
           fullData.temples.forEach((temple) => {
             const templeDiv = document.createElement("div");
@@ -174,13 +184,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             resultsGrid.appendChild(templeDiv);
           });
         }
-      } else if (searchTerm === 'country' || searchTerm === 'countries') {
+      } else if (searchTerm === "country" || searchTerm === "countries") {
         if (fullData.countries && Array.isArray(fullData.countries)) {
           hasMatches = true;
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
-          resultsSection.innerHTML = '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
-          const resultsGrid = resultsSection.querySelector(".recommendation-grid");
+          resultsSection.innerHTML =
+            '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
+          const resultsGrid = resultsSection.querySelector(
+            ".recommendation-grid",
+          );
           recommendations.appendChild(resultsSection);
           fullData.countries.forEach((country) => {
             const countryDiv = document.createElement("div");
@@ -224,7 +237,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Reset button click handler
     resetBtn.addEventListener("click", () => {
       searchInput.value = "";
-      recommendations.innerHTML = '';
+      recommendations.innerHTML = "";
     });
   } catch (error) {
     console.error("Error fetching data:", error);
