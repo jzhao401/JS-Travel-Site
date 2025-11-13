@@ -87,17 +87,18 @@
             /* Hero section (About page) */
             .hero {
                 position: relative;
-                height: calc(
+                min-height: calc(
                     100vh - 60px
                 ); /* subtract approximate nav height */
                 background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80")
                     center/cover no-repeat;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
+                padding: 20px;
                 text-align: center;
                 color: #fff;
-                padding: 0 20px;
             }
             .hero::before {
                 content: "";
@@ -111,10 +112,23 @@
                 ); /* dark overlay for readability */
                 z-index: 0;
             }
+            .hero-inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 1000px;
+                padding: 20px;
+                z-index: 1;
+                position: relative;
+            }
             .hero-content {
                 position: relative;
                 z-index: 1;
                 max-width: 800px;
+                margin-bottom: 40px;
+                width: 100%;
+                text-align: center;
             }
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -135,13 +149,20 @@
                 .hero-content p {
                     font-size: 0.9rem;
                 }
+                .hero-inner {
+                    padding: 10px;
+                }
             }
 
             /* Team section styling */
             .team-section {
                 padding: 20px;
                 text-align: center;
-                margin: 60px 0 0 0;
+                margin: 0;
+                width: 100%;
+                margin-top: 20px;
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 8px;
             }
             .team-section h2 {
                 font-size: 2rem;
@@ -154,6 +175,7 @@
                 gap: 15px;
                 max-width: 1000px;
                 margin: 0 auto;
+                justify-content: center;
             }
             .team-member {
                 background: rgba(255, 255, 255, 0.9);
@@ -191,6 +213,10 @@
                 .team-member {
                     padding: 10px;
                 }
+                .team-section {
+                    padding: 10px;
+                    margin-top: 10px;
+                }
             }
         </style>
     </head>
@@ -220,44 +246,45 @@
 
         <!-- About page hero section -->
         <section class="hero">
-            <div class="hero-content">
-                <h1>ABOUT US.</h1>
-                <p>
-                    Welcome to Our Company! We are a team of passionate
-                    individuals dedicated to provide the best experience for
-                    people traveling to different destinations around the world.
-                    Our values include integrity, innovation, customer
-                    satisfaction, and teamwork. We believe our goals align with
-                    the dreams of every traveler. Feel free to explore our
-                    website to learn more about what we offer!
-                </p>
-            </div>
-        </section>
-
-        <!-- Team section -->
-        <section class="team-section">
-            <h2>Our Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="placeholder-img"></div>
-                    <h3>John Doe</h3>
-                    <p class="role-badge">CEO</p>
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1>ABOUT US.</h1>
+                    <p>
+                        Welcome to Our Company! We are a team of passionate
+                        individuals dedicated to provide the best experience for
+                        people traveling to different destinations around the world.
+                        Our values include integrity, innovation, customer
+                        satisfaction, and teamwork. We believe our goals align with
+                        the dreams of every traveler. Feel free to explore our
+                        website to learn more about what we offer!
+                    </p>
                 </div>
-                <div class="team-member">
-                    <div class="placeholder-img"></div>
-                    <h3>Jane Smith</h3>
-                    <p class="role-badge">CTO</p>
-                </div>
-                <div class="team-member">
-                    <div class="placeholder-img"></div>
-                    <h3>Mike Johnson</h3>
-                    <p class="role-badge">Lead Designer</p>
-                </div>
-                <div class="team-member">
-                    <div class="placeholder-img"></div>
-                    <h3>Sarah Lee</h3>
-                    <p class="role-badge">Marketing Manager</p>
-                </div>
+                <!-- Team section -->
+                <section class="team-section">
+                    <h2>Our Team</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="placeholder-img"></div>
+                            <h3>John Doe</h3>
+                            <p class="role-badge">CEO</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="placeholder-img"></div>
+                            <h3>Jane Smith</h3>
+                            <p class="role-badge">CTO</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="placeholder-img"></div>
+                            <h3>Mike Johnson</h3>
+                            <p class="role-badge">Lead Designer</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="placeholder-img"></div>
+                            <h3>Sarah Lee</h3>
+                            <p class="role-badge">Marketing Manager</p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
     </body>
