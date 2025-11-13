@@ -104,6 +104,73 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!data.countries && !data.temples && !data.beaches) {
       console.error("No valid data sections found:", data);
     }
+
+    // Search functionality setup
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const recommendations = document.getElementById('recommendations');
+
+    if (!searchInput || !searchBtn || !resetBtn || !recommendations) {
+      console.error('Search elements not found.');
+      return;
+    }
+
+    // Search button click handler
+    searchBtn.addEventListener('click', () => {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      if (!searchTerm) {
+        console.warn('Empty search term.');
+        return;
+      }
+
+      // Remove existing no-results message if any
+      const existingMessage = recommendations.querySelector('.no-results');
+      if (existingMessage) {
+        existingMessage.remove();
+      }
+
+      const sections = recommendations.querySelectorAll('.category-section');
+      let hasMatches = false;
+
+      sections.forEach((section) => {
+        const h2Text = section.querySelector('h2').textContent.toLowerCase();
+        section.style.display = 'none'; // Hide all initially
+
+        if (searchTerm.includes('beach') && h2Text === 'beaches') {
+          section.style.display = 'block';
+          hasMatches = true;
+        } else if (searchTerm.includes('temple') && h2Text === 'temples') {
+          section.style.display = 'block';
+          hasMatches = true;
+        } else if (searchTerm.includes('country') && h2Text === 'countries') {
+          section.style.display = 'block';
+          hasMatches = true;
+        }
+      });
+
+      if (!hasMatches) {
+        const message = document.createElement('p');
+        message.className = 'no-results';
+        message.style.cssText = 'text-align: center; font-size: 1.2rem; color: #666; padding: 40px 20px; margin: 0;';
+        message.textContent = `No results found for "${searchInput.value}".`;
+        recommendations.appendChild(message);
+      }
+    });
+
+    // Reset button click handler
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      const sections = recommendations.querySelectorAll('.category-section');
+      sections.forEach((section) => {
+        section.style.display = 'block';
+      });
+      // Remove no-results message if present
+      const existingMessage = recommendations.querySelector('.no-results');
+      if (existingMessage) {
+        existingMessage.remove();
+      }
+    });
   } catch (error) {
     console.error("Error fetching data:", error);
   }
