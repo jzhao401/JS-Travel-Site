@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
           resultsSection.innerHTML =
-            '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
+            '<div class="recommendation-grid"></div>';
           const resultsGrid = resultsSection.querySelector(
             ".recommendation-grid",
           );
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
           resultsSection.innerHTML =
-            '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
+            '<div class="recommendation-grid"></div>';
           const resultsGrid = resultsSection.querySelector(
             ".recommendation-grid",
           );
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
           resultsSection.innerHTML =
-            '<h2>Explore Dream Destinations</h2><div class="recommendation-grid"></div>';
+            '<div class="recommendation-grid"></div>';
           const resultsGrid = resultsSection.querySelector(
             ".recommendation-grid",
           );
