@@ -201,7 +201,8 @@
                     padding: 20px;
                     margin: 0 10px;
                 }
-                .contact-form input, .contact-form textarea {
+                .contact-form input,
+                .contact-form textarea {
                     font-size: 16px; /* Prevents zoom on iOS */
                 }
             }
@@ -236,17 +237,33 @@
             <div class="hero-inner">
                 <div class="hero-content">
                     <h1>CONTACT US</h1>
-                    <p>
-                        Get in touch with us for any inquiries.
-                    </p>
+                    <p>Get in touch with us for any inquiries.</p>
                     <div class="contact-form">
                         <form id="contactForm">
                             <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                placeholder="Your Name"
+                            />
                             <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required placeholder="Your Email">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                placeholder="Your Email"
+                            />
                             <label for="message">Message:</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                required
+                                placeholder="Your Message"
+                            ></textarea>
                             <button type="submit">Send Message</button>
                         </form>
                     </div>
@@ -256,18 +273,24 @@
 
         <script>
             // Form submit handler with validation
-            document.getElementById("contactForm").addEventListener("submit", function(e) {
-                e.preventDefault();
-                const name = document.getElementById("name").value.trim();
-                const email = document.getElementById("email").value.trim();
-                const message = document.getElementById("message").value.trim();
-                if (name && email && message) {
-                    alert("Thank you for your message! We'll get back to you soon.");
-                    this.reset();
-                } else {
-                    alert("Please fill in all fields.");
-                }
-            });
+            document
+                .getElementById("contactForm")
+                .addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    const name = document.getElementById("name").value.trim();
+                    const email = document.getElementById("email").value.trim();
+                    const message = document
+                        .getElementById("message")
+                        .value.trim();
+                    if (name && email && message) {
+                        alert(
+                            "Thank you for your message! We'll get back to you soon.",
+                        );
+                        this.reset();
+                    } else {
+                        alert("Please fill in all fields.");
+                    }
+                });
         </script>
     </body>
 </html>
