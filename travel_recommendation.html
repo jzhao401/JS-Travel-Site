@@ -109,7 +109,7 @@
                     center/cover no-repeat;
                 display: flex;
                 justify-content: space-between;
-                align-items: flex-start;
+                align-items: center;
                 padding: 40px 20px;
                 overflow: hidden; /* Prevent hero overflow */
                 color: #fff;
@@ -128,6 +128,10 @@
                 max-width: 50%;
                 padding-right: 20px;
                 box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
             }
             .hero-content h1 {
                 font-size: 3rem;
@@ -150,6 +154,7 @@
                 border-radius: 4px;
                 margin-top: 1rem;
                 transition: background 0.3s;
+                align-self: center;
             }
             .btn-book:hover {
                 background: #16a085;
