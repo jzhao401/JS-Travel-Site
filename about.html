@@ -87,7 +87,7 @@
             /* Hero section (About page) */
             .hero {
                 position: relative;
-                height: 100vh; /* subtract approximate nav height */
+                height: calc(100vh - 60px); /* subtract approximate nav height */
                 background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80")
                     center/cover no-repeat;
                 display: flex;
@@ -139,12 +139,12 @@
             .team-section {
                 padding: 20px;
                 text-align: center;
-                margin: 10px 0 0 0;
+                margin: 60px 0 0 0;
             }
             .team-section h2 {
                 font-size: 2rem;
                 margin-bottom: 2rem;
-                color: #fff;
+                color: #333;
             }
             .team-grid {
                 display: grid;
@@ -230,32 +230,33 @@
                     website to learn more about what we offer!
                 </p>
             </div>
-            <!-- Team section -->
-            <section class="team-section">
-                <h2>Our Team</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="placeholder-img"></div>
-                        <h3>John Doe</h3>
-                        <p class="role-badge">CEO</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="placeholder-img"></div>
-                        <h3>Jane Smith</h3>
-                        <p class="role-badge">CTO</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="placeholder-img"></div>
-                        <h3>Mike Johnson</h3>
-                        <p class="role-badge">Lead Designer</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="placeholder-img"></div>
-                        <h3>Sarah Lee</h3>
-                        <p class="role-badge">Marketing Manager</p>
-                    </div>
+        </section>
+
+        <!-- Team section -->
+        <section class="team-section">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="placeholder-img"></div>
+                    <h3>John Doe</h3>
+                    <p class="role-badge">CEO</p>
                 </div>
-            </section>
+                <div class="team-member">
+                    <div class="placeholder-img"></div>
+                    <h3>Jane Smith</h3>
+                    <p class="role-badge">CTO</p>
+                </div>
+                <div class="team-member">
+                    <div class="placeholder-img"></div>
+                    <h3>Mike Johnson</h3>
+                    <p class="role-badge">Lead Designer</p>
+                </div>
+                <div class="team-member">
+                    <div class="placeholder-img"></div>
+                    <h3>Sarah Lee</h3>
+                    <p class="role-badge">Marketing Manager</p>
+                </div>
+            </div>
         </section>
     </body>
 </html>
