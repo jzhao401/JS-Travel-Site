@@ -145,8 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           hasMatches = true;
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
-          resultsSection.innerHTML =
-            '<div class="recommendation-grid"></div>';
+          resultsSection.innerHTML = '<div class="recommendation-grid"></div>';
           const resultsGrid = resultsSection.querySelector(
             ".recommendation-grid",
           );
@@ -167,8 +166,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           hasMatches = true;
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
-          resultsSection.innerHTML =
-            '<div class="recommendation-grid"></div>';
+          resultsSection.innerHTML = '<div class="recommendation-grid"></div>';
           const resultsGrid = resultsSection.querySelector(
             ".recommendation-grid",
           );
@@ -189,8 +187,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           hasMatches = true;
           const resultsSection = document.createElement("section");
           resultsSection.className = "category-section";
-          resultsSection.innerHTML =
-            '<div class="recommendation-grid"></div>';
+          resultsSection.innerHTML = '<div class="recommendation-grid"></div>';
           const resultsGrid = resultsSection.querySelector(
             ".recommendation-grid",
           );
