@@ -3,19 +3,30 @@
     <head>
         <title>Travel Recommendation</title>
         <style>
-            /* Basic styling for navigation bar */
+            /* Dark navigation bar styling */
             nav {
-                background-color: #f2f2f2;
-                padding: 10px;
+                background-color: #333;          /* Dark background */
+                color: #fff;                     /* Light text */
+                padding: 10px 20px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            nav .logo {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff;
+                margin-right: 30px;
             }
             nav .nav-links a {
                 margin-right: 15px;
                 text-decoration: none;
-                color: #333;
-                font-weight: bold;
+                color: #fff;                     /* White links */
+                font-weight: normal;
+            }
+            nav .nav-links a:hover {
+                text-decoration: underline;
             }
             nav .search-container {
                 display: flex;
@@ -24,15 +35,26 @@
             nav .search-container input[type="text"] {
                 padding: 5px;
                 margin-right: 5px;
+                border: none;
+                border-radius: 3px;
             }
             nav .search-container button {
                 margin-left: 5px;
                 padding: 5px 10px;
+                border: none;
+                border-radius: 3px;
+                background-color: #555;
+                color: #fff;
+                cursor: pointer;
+            }
+            nav .search-container button:hover {
+                background-color: #777;
             }
         </style>
     </head>
     <body>
         <nav>
+            <div class="logo">TravelBloom ✈️</div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
