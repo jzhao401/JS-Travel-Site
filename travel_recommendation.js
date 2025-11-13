@@ -19,8 +19,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (data.countries && Array.isArray(data.countries)) {
       const countriesSection = document.createElement("section");
       countriesSection.className = "category-section";
-      countriesSection.innerHTML = '<h2>Countries</h2><div class="recommendation-grid"></div>';
-      const countriesGrid = countriesSection.querySelector(".recommendation-grid");
+      countriesSection.innerHTML =
+        '<h2>Countries</h2><div class="recommendation-grid"></div>';
+      const countriesGrid = countriesSection.querySelector(
+        ".recommendation-grid",
+      );
 
       data.countries.forEach((country) => {
         const countryDiv = document.createElement("div");
@@ -42,9 +45,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         countryDiv.innerHTML = `
-          <img src="${country.cities?.[0]?.imageUrl || ''}" alt="${country.name}" style="width: 100%; height: 200px; object-fit: cover;">
+          <img src="${country.cities?.[0]?.imageUrl || ""}" alt="${country.name}" style="width: 100%; height: 200px; object-fit: cover;">
           <h3>${country.name}</h3>
-          <p>${country.cities?.[0]?.description || ''}</p>
+          <p>${country.cities?.[0]?.description || ""}</p>
           ${citiesHtml ? `<div class="country-cities">${citiesHtml}</div>` : ""}
         `;
 
@@ -58,7 +61,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (data.temples && Array.isArray(data.temples)) {
       const templesSection = document.createElement("section");
       templesSection.className = "category-section";
-      templesSection.innerHTML = '<h2>Temples</h2><div class="recommendation-grid"></div>';
+      templesSection.innerHTML =
+        '<h2>Temples</h2><div class="recommendation-grid"></div>';
       const templesGrid = templesSection.querySelector(".recommendation-grid");
 
       data.temples.forEach((temple) => {
@@ -79,7 +83,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (data.beaches && Array.isArray(data.beaches)) {
       const beachesSection = document.createElement("section");
       beachesSection.className = "category-section";
-      beachesSection.innerHTML = '<h2>Beaches</h2><div class="recommendation-grid"></div>';
+      beachesSection.innerHTML =
+        '<h2>Beaches</h2><div class="recommendation-grid"></div>';
       const beachesGrid = beachesSection.querySelector(".recommendation-grid");
 
       data.beaches.forEach((beach) => {
